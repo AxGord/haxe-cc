@@ -703,7 +703,7 @@ import js.html.Uint8Array;
 	public var enabledInHierarchy : Bool;
 	public var _isOnLoadCalled : Float;
 	@:overload(function(className:String):Dynamic { })
-	public function addComponent<T:(Component)>(type:haxe.Constraints.Constructible<T>):T;
+	public function addComponent<T:(Component)>(type:Class<T>):T;
 	@:overload(function(className:String):Dynamic { })
 	public function getComponent<T:(Component)>(type:{ public var prototype : T; }):T;
 	@:overload(function(className:String):Array<Dynamic> { })
@@ -1004,7 +1004,7 @@ interface IEventTarget {
 	public function stroke():Void;
 	public function fill():Void;
 }
-@:native("cc.Loader") extern class Loader extends Pipeline {
+@:native("cc.loader") extern class Loader extends Pipeline {
 	static public var assetLoader : Dynamic;
 	static public var downloader : Dynamic;
 	static public var loader : Dynamic;
@@ -1012,31 +1012,31 @@ interface IEventTarget {
 	static public function addDownloadHandlers(extMap:Dynamic):Void;
 	static public function addLoadHandlers(extMap:Dynamic):Void;
 	@:overload(function(resources:haxe.extern.EitherType<String, haxe.extern.EitherType<Array<String>, { @:optional
-	public var uuid : String; @:optional
-	public var url : String; @:optional
-	public var type : String; }>>, progressCallback:Float -> Float -> Dynamic -> Void, completeCallback:haxe.Constraints.Function):Void { })
+		public var uuid : String; @:optional
+		public var url : String; @:optional
+		public var type : String; }>>, progressCallback:Float -> Float -> Dynamic -> Void, completeCallback:haxe.Constraints.Function):Void { })
 	static public function load(resources:haxe.extern.EitherType<String, haxe.extern.EitherType<Array<String>, { @:optional
-	public var uuid : String; @:optional
-	public var url : String; @:optional
-	public var type : String; }>>, ?completeCallback:haxe.Constraints.Function):Void;
-	@:overload(function(url:String, type:Dynamic, completeCallback:Error -> Dynamic -> Void):Void { })
-	@:overload(function(url:String, type:Dynamic):Void { })
-	@:overload(function(url:String, progressCallback:Float -> Float -> Dynamic -> Void, completeCallback:Error -> Dynamic -> Void):Void { })
-	@:overload(function(url:String, completeCallback:Error -> Dynamic -> Void):Void { })
+		public var uuid : String; @:optional
+		public var url : String; @:optional
+		public var type : String; }>>, ?completeCallback:haxe.Constraints.Function):Void;
+	@:overload(function<T>(url:String, type:Class<T>, completeCallback:Error -> T -> Void):Void { })
+	@:overload(function(url:String, type:Class<Any>):Void { })
+	@:overload(function<T>(url:String, progressCallback:Float -> Float -> T -> Void, completeCallback:Error -> T -> Void):Void { })
+	@:overload(function(url:String, completeCallback:Error -> Any -> Void):Void { })
 	@:overload(function(url:String):Void { })
-	static public function loadRes(url:String, type:Dynamic, progressCallback:Float -> Float -> Dynamic -> Void, completeCallback:Error -> Dynamic -> Void):Void;
-	@:overload(function(url:Array<String>, type:Dynamic, completeCallback:Error -> Array<Dynamic> -> Void):Void { })
-	@:overload(function(url:Array<String>, type:Dynamic):Void { })
-	@:overload(function(url:Array<String>, progressCallback:Float -> Float -> Dynamic -> Void, completeCallback:Error -> Array<Dynamic> -> Void):Void { })
-	@:overload(function(url:Array<String>, completeCallback:Error -> Array<Dynamic> -> Void):Void { })
+	static public function loadRes<T>(url:String, type:Class<T>, progressCallback:Float -> Float -> T -> Void, completeCallback:Error -> T -> Void):Void;
+	@:overload(function<T>(url:Array<String>, type:Class<T>, completeCallback:Error -> Array<T> -> Void):Void { })
+	@:overload(function(url:Array<String>, type:Class<Any>):Void { })
+	@:overload(function<T>(url:Array<String>, progressCallback:Float -> Float -> T -> Void, completeCallback:Error -> Array<T> -> Void):Void { })
+	@:overload(function(url:Array<String>, completeCallback:Error -> Array<Any> -> Void):Void { })
 	@:overload(function(url:Array<String>):Void { })
-	static public function loadResArray(url:Array<String>, type:Dynamic, progressCallback:Float -> Float -> Dynamic -> Void, completeCallback:Error -> Array<Dynamic> -> Void):Void;
-	@:overload(function(url:String, type:Dynamic, completeCallback:Error -> Array<Dynamic> -> Array<String> -> Void):Void { })
-	@:overload(function(url:String, type:Dynamic):Void { })
-	@:overload(function(url:String, progressCallback:Float -> Float -> Dynamic -> Void, completeCallback:Error -> Array<Dynamic> -> Array<String> -> Void):Void { })
-	@:overload(function(url:String, completeCallback:Error -> Array<Dynamic> -> Array<String> -> Void):Void { })
+	static public function loadResArray<T>(url:Array<String>, type:Class<T>, progressCallback:Float -> Float -> T -> Void, completeCallback:Error -> Array<T> -> Void):Void;
+	@:overload(function<T>(url:String, type:Class<T>, completeCallback:Error -> Array<T> -> Array<String> -> Void):Void { })
+	@:overload(function(url:String, type:Any):Void { })
+	@:overload(function<T>(url:String, progressCallback:Float -> Float -> T -> Void, completeCallback:Error -> Array<T> -> Array<String> -> Void):Void { })
+	@:overload(function(url:String, completeCallback:Error -> Array<Any> -> Array<String> -> Void):Void { })
 	@:overload(function(url:String):Void { })
-	static public function loadResDir(url:String, type:Dynamic, progressCallback:Float -> Float -> Dynamic -> Void, completeCallback:Error -> Array<Dynamic> -> Array<String> -> Void):Void;
+	static public function loadResDir<T>(url:String, type:Class<T>, progressCallback:Float -> Float -> T -> Void, completeCallback:Error -> Array<T> -> Array<String> -> Void):Void;
 	static public function getRes(url:String, ?type:haxe.Constraints.Function):Dynamic;
 	static public function getDependsRecursively(owner:haxe.extern.EitherType<Asset, haxe.extern.EitherType<RawAsset, String>>):Array<Dynamic>;
 	static public function release(asset:haxe.extern.EitherType<Asset, haxe.extern.EitherType<RawAsset, haxe.extern.EitherType<String, Array<Dynamic>>>>):Void;
@@ -1795,7 +1795,7 @@ interface IEventTarget {
 	@:overload(function(className:String):Array<Dynamic> { })
 	public function getComponentsInChildren<T:(Component)>(type:Class<T>):Array<T>;
 	@:overload(function(className:String):Dynamic { })
-	public function addComponent<T:(Component)>(type:haxe.Constraints.Constructible<T>):T;
+	public function addComponent<T:(Component)>(type:Class<T>):T;
 	public function removeComponent(component:haxe.extern.EitherType<String, haxe.extern.EitherType<haxe.Constraints.Function, Component>>):Void;
 	public function destroyAllChildren():Void;
 	public function hasEventListener(type:String):Bool;
