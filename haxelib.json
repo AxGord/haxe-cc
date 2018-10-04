@@ -1,0 +1,20 @@
+{
+	"name": "hcc",
+	"license": "MIT",
+	"tags": [
+		"externs",
+		"js",
+		"cc",
+		"cocos",
+		"cocoscreator"
+	],
+	"description": "Haxe Cocos Creator externs",
+	"contributors": [
+		"AxGord"
+	],
+	"releasenote": "Init",
+	"version": "2.0.0",
+	"url": "https://github.com/AxGord/Pony",
+	"classPath": "src/",
+	"dependencies": {}
+}
