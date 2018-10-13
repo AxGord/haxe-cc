@@ -13,8 +13,8 @@
 "contributors": [
 "AxGord"
 ],
-"releasenote": "Loader and addComponent error fix",
-"version": "2.0.1",
+"releasenote": "toplvl",
+"version": "2.0.2",
 "url": "https://github.com/AxGord/haxe-cc",
 "dependencies": {}
 }

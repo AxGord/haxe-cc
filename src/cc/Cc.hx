@@ -1927,7 +1927,7 @@ interface IEventTarget {
 	public var frequency : Float;
 	public var dampingRatio : Float;
 }
-@:native("cc.CcTopLevel") extern class CcTopLevel {
+@:native("cc") extern class Cc {
 	static var ENGINE_VERSION : String;
 	static function speed(action:ActionInterval, speed:Float):Action;
 	static function follow(followedNode:Node, rect:Rect):Action;
