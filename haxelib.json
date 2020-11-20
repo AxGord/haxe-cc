@@ -13,8 +13,8 @@
 "contributors": [
 "AxGord"
 ],
-"releasenote": "toplvl",
-"version": "2.0.2",
+"releasenote": "Haxe 4",
+"version": "2.0.3",
 "url": "https://github.com/AxGord/haxe-cc",
 "dependencies": {}
 }

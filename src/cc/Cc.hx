@@ -15,9 +15,14 @@ import js.html.CanvasElement;
 import js.html.Element;
 import js.html.DivElement;
 import js.html.XMLHttpRequest;
-import js.Error;
 import js.html.Position;
+#if (haxe_ver >= 4.00)
+import js.lib.Uint8Array;
+import js.lib.Error;
+#else
 import js.html.Uint8Array;
+import js.Error;
+#end
 
 @:native("cc.Action") extern class Action {
 	public function clone():Action;
@@ -860,10 +865,17 @@ import js.html.Uint8Array;
 	public var progress : Float;
 	public var slideEvents : Array<Component.EventHandler>;
 }
+#if (haxe_ver >= 4.00)
+extern enum abstract SpriteState(String) {
+    var NORMAL;
+    var GRAY;
+}
+#else
 @:fakeEnum(String) extern enum SpriteState {
     NORMAL;
     GRAY;
 }
+#end
 @:native("cc.Sprite") extern class Sprite extends Component {
 	public var spriteFrame : SpriteFrame;
 	public var type : Sprite.Type;
